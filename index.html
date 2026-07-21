@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:linear-gradient(180deg,#0c1b4d,#1346b7,#e11d48);
+font-family:Poppins,sans-serif;
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+
+}
+
+/* CARD */
+
+.card{
+
+width:92%;
+max-width:420px;
+background:white;
+padding:30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+animation:popup 1s;
+z-index:5;
+
+}
+
+@keyframes popup{
+
+from{
+transform:scale(.5);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* HERO IMAGE */
+
+.hero{
+
+width:220px;
+max-width:80%;
+animation:swing 3s ease-in-out infinite;
+transform-origin:top center;
+filter:drop-shadow(0 0 20px rgba(255,255,255,.5));
+
+}
+
+@keyframes swing{
+
+0%{transform:rotate(-10deg);}
+50%{transform:rotate(10deg);}
+100%{transform:rotate(-10deg);}
+
+}
+
+/* WEB */
+
+.webline{
+
+width:3px;
+height:70px;
+background:white;
+margin:auto;
+
+}
+
+/* TITLE */
+
+h1{
+
+font-family:Bangers,cursive;
+font-size:44px;
+letter-spacing:3px;
+color:#e11d48;
+animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{text-shadow:0 0 5px #ff4d6d;}
+to{text-shadow:0 0 20px #1d4ed8;}
+
+}
+
+.name{
+
+font-size:40px;
+font-weight:bold;
+color:#1346b7;
+margin:10px 0;
+
+}
+
+.message{
+
+margin-top:15px;
+line-height:1.8;
+color:#555;
+
+}
+
+.cake{
+
+font-size:60px;
+margin-top:15px;
+animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+.brand{
+
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+color:#e11d48;
+
+}
+
+.footer{
+
+color:#666;
+font-size:14px;
+
+}
+
+/* BALLOONS */
+
+.balloon{
+
+position:absolute;
+font-size:38px;
+animation:rise linear infinite;
+
+}
+
+@keyframes rise{
+
+from{
+transform:translateY(110vh);
+}
+
+to{
+transform:translateY(-150px);
+}
+
+}
+
+/* CONFETTI */
+
+.confetti{
+
+position:absolute;
+width:8px;
+height:8px;
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+from{
+transform:translateY(-20px) rotate(0deg);
+}
+
+to{
+transform:translateY(110vh) rotate(720deg);
+}
+
+}
+
+/* WEBS */
+
+svg{
+
+position:absolute;
+opacity:.35;
+
+}
+
+.left{
+
+top:0;
+left:0;
+
+}
+
+.right{
+
+top:0;
+right:0;
+transform:scaleX(-1);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- CORNER WEBS -->
+
+<svg class="left" width="150" height="150">
+
+<path d="M0 0 L150 0 M0 0 L0 150 M0 0 L150 150 M30 0 L30 120 M60 0 L60 90 M90 0 L90 60 M0 30 L120 30 M0 60 L90 60 M0 90 L60 90"
+
+stroke="white"
+
+stroke-width="2"
+
+fill="none"/>
+
+</svg>
+
+<svg class="right" width="150" height="150">
+
+<path d="M0 0 L150 0 M0 0 L0 150 M0 0 L150 150 M30 0 L30 120 M60 0 L60 90 M90 0 L90 60 M0 30 L120 30 M0 60 L90 60 M0 90 L60 90"
+
+stroke="white"
+
+stroke-width="2"
+
+fill="none"/>
+
+</svg>
+
+<div class="card">
+
+<div class="webline"></div>
+
+<!-- Replace hero.png with your own licensed superhero image -->
+
+<img src="spiderman.png" class="hero" alt="Birthday Hero">
+
+<h1>HAPPY BIRTHDAY!</h1>
+
+<div class="name">Danuja</div>
+
+<div class="message">
+
+Wishing you a day full of adventure,
+fun, laughter and amazing surprises!
+
+May all your birthday wishes come true.
+
+</div>
+
+<div class="cake">🎂</div>
+
+<div class="brand">
+
+CHATHU CAKE DECO
+
+</div>
+
+<div class="footer">
+
+Made with ❤️ for your Special Day
+
+</div>
+
+</div>
+
+<script>
+
+/* BALLOONS */
+
+let icons=["🎈","🎉","⭐"];
+
+for(let i=0;i<10;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=(8+Math.random()*5)+"s";
+
+b.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(b);
+
+}
+
+/* CONFETTI */
+
+let colors=["#ff0000","#0066ff","#ffff00","#00ff99","#ffffff","#ff66cc"];
+
+for(let i=0;i<150;i++){
+
+let c=document.createElement("div");
+
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+c.style.animationDuration=(3+Math.random()*5)+"s";
+
+c.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(c);
+
+}
+
+</script>
+
+</body>
+</html>
