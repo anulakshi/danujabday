@@ -350,15 +350,27 @@ document.body.appendChild(c);
 
 const music = document.getElementById("bgMusic");
 
-function startMusic() {
-    music.play().catch(() => {});
+function startMusic(){
+
+    music.volume = 0.8;
+
+    let playPromise = music.play();
+
+    if(playPromise !== undefined){
+        playPromise.then(() => {
+            console.log("Music playing");
+        })
+        .catch(error => {
+            console.log("Playback failed", error);
+        });
+    }
+
     document.removeEventListener("click", startMusic);
     document.removeEventListener("touchstart", startMusic);
 }
 
-document.addEventListener("click", startMusic);
-document.addEventListener("touchstart", startMusic);
-
+document.addEventListener("click", startMusic, {once:true});
+document.addEventListener("touchstart", startMusic, {once:true});
 
 </script>
 
