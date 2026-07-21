@@ -296,6 +296,12 @@ Made with ❤️ for your Special Day
 
 </div>
 
+<audio id="bgMusic" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+
+
 <script>
 
 /* BALLOONS */
@@ -342,7 +348,20 @@ document.body.appendChild(c);
 
 }
 
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+    music.play().catch(() => {});
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+}
+
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
+
+
 </script>
+
 
 </body>
 </html>
