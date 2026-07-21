@@ -29,6 +29,27 @@ position:relative;
 
 }
 
+#startScreen{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(180deg,#0c1b4d,#1346b7,#e11d48);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+#startBtn{
+    padding:18px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#e11d48;
+    font-weight:bold;
+}
+
 /* CARD */
 
 .card{
@@ -259,6 +280,14 @@ fill="none"/>
 
 </svg>
 
+<div id="startScreen">
+    <button id="startBtn">🎉 Tap to Open Birthday Surprise 🎵</button>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
 <div class="card">
 
 <div class="webline"></div>
@@ -273,10 +302,10 @@ fill="none"/>
 
 <div class="message">
 
-<!--Wishing you a day full of adventure,
+Wishing you a day full of adventure,
 fun, laughter and amazing surprises!
 
-May all your birthday wishes come true.-->
+May all your birthday wishes come true.
 
 </div>
 
@@ -295,11 +324,6 @@ Made with ❤️ for your Special Day
 </div>
 
 </div>
-
-<audio id="bgMusic" loop>
-    <source src="birthday.mp3" type="audio/mpeg">
-</audio>
-
 
 
 <script>
@@ -349,28 +373,20 @@ document.body.appendChild(c);
 }
 
 const music = document.getElementById("bgMusic");
+const btn = document.getElementById("startBtn");
 
-function startMusic(){
+btn.addEventListener("click", function(){
 
-    music.volume = 0.8;
+    music.play()
+    .then(()=>{
+        document.getElementById("startScreen").style.display="none";
+    })
+    .catch(error=>{
+        alert("Please tap again to start music");
+    });
 
-    let playPromise = music.play();
+});
 
-    if(playPromise !== undefined){
-        playPromise.then(() => {
-            console.log("Music playing");
-        })
-        .catch(error => {
-            console.log("Playback failed", error);
-        });
-    }
-
-    document.removeEventListener("click", startMusic);
-    document.removeEventListener("touchstart", startMusic);
-}
-
-document.addEventListener("click", startMusic, {once:true});
-document.addEventListener("touchstart", startMusic, {once:true});
 
 </script>
 
